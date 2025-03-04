@@ -29,7 +29,7 @@ export const ArticleParamsForm = ({
 	onSetOptions,
 }: ArticleProp) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [formOptions, setFormOptions] = useState<ArticleStateType>((optionState));
+	const [formOptions, setFormOptions] = useState<ArticleStateType>(optionState);
 	const ref = useRef<HTMLDivElement | null>(null);
 
 	const toggleIsOpen = () => {
@@ -66,58 +66,55 @@ export const ArticleParamsForm = ({
 
 	return (
 		<div ref={ref}>
-				<ArrowButton isOpen={isOpen} onClick={toggleIsOpen} />
-				<aside className={openContainer}>
-					<form className={styles.form} onSubmit={handleSubmit} onReset={handleReset}>
-						<Text uppercase={true} weight={800} size={31} as={'h2'}>
-							Задайте параметры
-						</Text>
+			<ArrowButton isOpen={isOpen} onClick={toggleIsOpen} />
+			<aside className={openContainer}>
+				<form
+					className={styles.form}
+					onSubmit={handleSubmit}
+					onReset={handleReset}>
+					<Text uppercase={true} weight={800} size={31} as={'h2'}>
+						Задайте параметры
+					</Text>
 
-						<Select
-							title='Шрифт'
-							options={fontFamilyOptions}
-							selected={formOptions.fontFamilyOption}
-							onChange={(value) =>
-								handleChangeOption('fontFamilyOption', value)
-							}
-						/>
-						<RadioGroup
-							title='Размер Шрифта'
-							options={fontSizeOptions}
-							selected={formOptions.fontSizeOption}
-							name='fontSize'
-							onChange={(value) => handleChangeOption('fontSizeOption', value)}
-						/>
-						<Select
-							title='Цвет шрифта'
-							options={fontColors}
-							selected={formOptions.fontColor}
-							onChange={(value) => handleChangeOption('fontColor', value)}
-						/>
-						<Separator />
-						<Select
-							title='Цвет фона'
-							options={backgroundColors}
-							selected={formOptions.backgroundColor}
-							onChange={(value) => handleChangeOption('backgroundColor', value)}
-						/>
-						<Select
-							title='Ширина контента'
-							options={contentWidthArr}
-							selected={formOptions.contentWidth}
-							onChange={(value) => handleChangeOption('contentWidth', value)}
-						/>
+					<Select
+						title='Шрифт'
+						options={fontFamilyOptions}
+						selected={formOptions.fontFamilyOption}
+						onChange={(value) => handleChangeOption('fontFamilyOption', value)}
+					/>
+					<RadioGroup
+						title='Размер Шрифта'
+						options={fontSizeOptions}
+						selected={formOptions.fontSizeOption}
+						name='fontSize'
+						onChange={(value) => handleChangeOption('fontSizeOption', value)}
+					/>
+					<Select
+						title='Цвет шрифта'
+						options={fontColors}
+						selected={formOptions.fontColor}
+						onChange={(value) => handleChangeOption('fontColor', value)}
+					/>
+					<Separator />
+					<Select
+						title='Цвет фона'
+						options={backgroundColors}
+						selected={formOptions.backgroundColor}
+						onChange={(value) => handleChangeOption('backgroundColor', value)}
+					/>
+					<Select
+						title='Ширина контента'
+						options={contentWidthArr}
+						selected={formOptions.contentWidth}
+						onChange={(value) => handleChangeOption('contentWidth', value)}
+					/>
 
-						<div className={styles.bottomContainer}>
-							<Button
-								title='Сбросить'
-								htmlType='reset'
-								type='clear'
-							/>
-							<Button title='Применить' htmlType='submit' type='apply' />
-						</div>
-					</form>
-				</aside>
-			</div>
+					<div className={styles.bottomContainer}>
+						<Button title='Сбросить' htmlType='reset' type='clear' />
+						<Button title='Применить' htmlType='submit' type='apply' />
+					</div>
+				</form>
+			</aside>
+		</div>
 	);
 };
