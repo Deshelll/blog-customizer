@@ -27,7 +27,10 @@ const App = () => {
 					'--bg-color': articleState.backgroundColor.value,
 				} as CSSProperties
 			}>
-			<ArticleParamsForm optionState={articleState} onSetOptions={setArticleState}/>
+			<ArticleParamsForm
+				optionState={articleState}
+				onSetOptions={setArticleState}
+			/>
 			<Article />
 		</main>
 	);
