@@ -29,13 +29,11 @@ export const ArticleParamsForm = ({
 	onSetOptions,
 }: ArticleProp) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [formOptions, setFormOptions] = useState<ArticleStateType>({
-		...optionState,
-	});
+	const [formOptions, setFormOptions] = useState<ArticleStateType>((optionState));
 	const ref = useRef<HTMLDivElement | null>(null);
 
-	const handleClickArrowButton = () => {
-		setIsOpen(isOpen ? false : true);
+	const toggleIsOpen = () => {
+		setIsOpen(!isOpen);
 	};
 
 	const openContainer = clsx(styles.container, isOpen && styles.container_open);
@@ -67,11 +65,10 @@ export const ArticleParamsForm = ({
 	});
 
 	return (
-		<>
-			<div ref={ref}>
-				<ArrowButton isOpen={isOpen} onClick={handleClickArrowButton} />
+		<div ref={ref}>
+				<ArrowButton isOpen={isOpen} onClick={toggleIsOpen} />
 				<aside className={openContainer}>
-					<form className={styles.form} onSubmit={handleSubmit}>
+					<form className={styles.form} onSubmit={handleSubmit} onReset={handleReset}>
 						<Text uppercase={true} weight={800} size={31} as={'h2'}>
 							Задайте параметры
 						</Text>
@@ -116,13 +113,11 @@ export const ArticleParamsForm = ({
 								title='Сбросить'
 								htmlType='reset'
 								type='clear'
-								onClick={handleReset}
 							/>
 							<Button title='Применить' htmlType='submit' type='apply' />
 						</div>
 					</form>
 				</aside>
 			</div>
-		</>
 	);
 };
