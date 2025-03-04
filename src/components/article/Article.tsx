@@ -18,7 +18,7 @@ export const Article = () => {
 				</Text>
 			</div>
 			<img className={styles.image} src={plane} alt='Картинка самолета' />
-			<Text dynamic size={18} fontStyle='italic'>
+			<Text dynamic size={18} align='center' fontStyle='italic'>
 				Фото: Hans-Peter Gauster , &quot;Bombardier CSeries CS300 HB-JCA&quot; ©
 				2017 CC BY-SA 2.0
 			</Text>
